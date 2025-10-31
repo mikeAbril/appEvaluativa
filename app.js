@@ -6,3 +6,6 @@ const app = express();
 app.use(express.json());
 
 app.listen(process.env.PORT, ()=> console.log(`servidor corriendo en http://localhost:${process.env.PORT}`));
+let pika  = 0
+
+console.log(pika);
