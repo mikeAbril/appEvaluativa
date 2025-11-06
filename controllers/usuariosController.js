@@ -1,4 +1,7 @@
-
+import {
+    obtenerUsuarios,
+    obtenerUsuarioPorId
+}from '../models/usuariosModel';
 
 
 
