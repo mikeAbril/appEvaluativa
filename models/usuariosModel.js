@@ -21,7 +21,7 @@ export async function actualizarUsuario(id,{nombre, email}){
     return { id, nombre, email };
 }
 
-export async function elimarUsuario(id){
+export async function eliminarUsuario(id){
     await pool.query('DELETE FROM usuarios WHERE id = ?', [id]);
     return { mensaje: 'Usuario eliminado' };
 }
