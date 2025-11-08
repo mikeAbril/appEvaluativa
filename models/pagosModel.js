@@ -19,6 +19,6 @@ export async function crearPago({usuario_id, monto, metodo }) {
 }
 
 export async function actualizarPago(usuario_id, { monto, metodo }) {
-  await pool.query('UPDATE pagos SET usuario_id = ?, monto = ? , metodo  = ? WHERE id = ?', [nombre, precio, id]);
+  await pool.query('UPDATE pagos SET usuario_id = ?, monto = ? , metodo  = ? WHERE id = ?', [usuario_id, monto, metodo]);
   return { usuario_id, monto, metodo };
 }
