@@ -4,10 +4,6 @@ import {
 }from '../models/usuariosModel';
 
 
-
-
-
-
 export async function getUsuarios(req, res) {
     try {
     const usuarios = await obtenerUsuarios();
