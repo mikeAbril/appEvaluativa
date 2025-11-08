@@ -1,11 +1,10 @@
 import {
     obtenerUsuarios,
-    obtenerUsuarioPorId
+    obtenerUsuarioPorId,
+    crearUsuario,
+    actualizarUsuario,
+    elimarUsuario
 }from '../models/usuariosModel';
-
-
-
-
 
 
 export async function getUsuarios(req, res) {
@@ -18,12 +17,22 @@ export async function getUsuarios(req, res) {
     }
 }
 
-export async function getUsuario(params) {
-    
-}
+export async function getUsuario(req, res) {
+    try {
+        const usuario = await obtenerUsuarioPorId(req.params.id);
+        if (!usuario) {res.status(404).json({error: 'usaurio no encontrado'})}
+        res.json(usuario)
+    } catch (error) {
+        res.status(500).json({error: 'error al obtener usuario'})
+        }
+    }
 
-export async function postUsuario(params) {
-    
+export async function postUsuario(req, res) {
+    try {
+        
+    } catch (error) {
+        
+    }
 }
 
 export async function putUsuario(params) {
