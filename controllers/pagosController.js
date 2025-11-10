@@ -1,12 +1,12 @@
 import {
-    obtenerPago,
+    obtenerPagos,
     obtenerPagoPorId,
     crearPago,
     actualizarPago
 } from '../models/pagosModel.js';
 
 export async function getPagos(res, req) {
-    const pagos = await obtenerPago()
+    const pagos = await obtenerPagos()
     res.json(pagos)
 }
 
