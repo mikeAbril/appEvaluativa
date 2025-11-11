@@ -1,15 +1,16 @@
-export async function postLecturaPrincipal(res, req) {
+
+export async function postLecturaPrincipal(req, res) {
     
 }
 
-export async function postLectura(res, req) {
+export async function postLectura(req, res) {
     
 }
 
-export async function getLecturas(res, req) {
+export async function getLecturas(req, res) {
     
 }
 
-export async function getLectura(res, req) {
+export async function getLectura(req, res) {
     
 }
