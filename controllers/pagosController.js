@@ -5,18 +5,18 @@ import {
     actualizarPago
 } from '../models/pagosModel.js';
 
-export async function getPagos(res, req) {
+export async function getPagos(req, res) {
     const pagos = await obtenerPago()
     res.json(pagos)
 }
 
-export async function getPago(res, req) {
+export async function getPago(req, res) {
     const pago = await obtenerPagoPorId(req.params.id);
     if(!pago) return res.status(404).json({error: 'Pago no encontrado'});
     res.json(pago);
 }
 
-export async function postPago(res, req) {
+export async function postPago(req, res) {
     const nuevo = await crearPago(req.body);
     res.status(201).json(nuevo);
 }
