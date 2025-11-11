@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "API Proyecto Usuarios-Pagos-Lecturas",
+    "name": "API Proyecto Usuarios-Pagos-Lecturas Localhost",
     "_postman_id": "a1b2c3d4-e5f6-g7h8-i9j0",
-    "description": "Colección de endpoints del proyecto",
+    "description": "Colección de endpoints del proyecto con localhost en URLs",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -13,22 +13,14 @@
           "name": "GET - Obtener todos los usuarios",
           "request": {
             "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/usuarios",
-              "host": ["{{baseUrl}}"],
-              "path": ["usuarios"]
-            }
+            "url": "http://localhost:3000/usuarios"
           }
         },
         {
           "name": "GET - Obtener usuario por ID",
           "request": {
             "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/usuarios/:id",
-              "host": ["{{baseUrl}}"],
-              "path": ["usuarios", ":id"]
-            }
+            "url": "http://localhost:3000/usuarios/1"
           }
         },
         {
@@ -38,13 +30,9 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"nombre\": \"Juan Pérez\",\n    \"direccion\": \"Calle 123\",\n    \"telefono\": \"3001234567\",\n    \"estado\": \"activo\"\n}"
+              "raw": "{\n  \"nombre\": \"Juan Pérez\",\n  \"direccion\": \"Calle 123\",\n  \"telefono\": \"3001234567\",\n  \"estado\": \"activo\"\n}"
             },
-            "url": {
-              "raw": "{{baseUrl}}/usuarios",
-              "host": ["{{baseUrl}}"],
-              "path": ["usuarios"]
-            }
+            "url": "http://localhost:3000/usuarios"
           }
         },
         {
@@ -54,13 +42,9 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"nombre\": \"Carlos López\",\n    \"direccion\": \"Carrera 45\",\n    \"telefono\": \"3019876543\",\n    \"estado\": \"activo\"\n}"
+              "raw": "{\n  \"nombre\": \"Carlos López\",\n  \"direccion\": \"Carrera 45\",\n  \"telefono\": \"3019876543\",\n  \"estado\": \"activo\"\n}"
             },
-            "url": {
-              "raw": "{{baseUrl}}/usuarios/:id",
-              "host": ["{{baseUrl}}"],
-              "path": ["usuarios", ":id"]
-            }
+            "url": "http://localhost:3000/usuarios/1"
           }
         },
         {
@@ -70,24 +54,16 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"estado\": \"inactivo\"\n}"
+              "raw": "{\n  \"estado\": \"inactivo\"\n}"
             },
-            "url": {
-              "raw": "{{baseUrl}}/usuarios/:id",
-              "host": ["{{baseUrl}}"],
-              "path": ["usuarios", ":id"]
-            }
+            "url": "http://localhost:3000/usuarios/1"
           }
         },
         {
           "name": "DELETE - Eliminar usuario",
           "request": {
             "method": "DELETE",
-            "url": {
-              "raw": "{{baseUrl}}/usuarios/:id",
-              "host": ["{{baseUrl}}"],
-              "path": ["usuarios", ":id"]
-            }
+            "url": "http://localhost:3000/usuarios/1"
           }
         }
       ]
@@ -99,33 +75,21 @@
           "name": "GET - Obtener pagos",
           "request": {
             "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/pagos",
-              "host": ["{{baseUrl}}"],
-              "path": ["pagos"]
-            }
+            "url": "http://localhost:3000/pagos"
           }
         },
         {
-          "name": "GET - Obtener pagos por usuario",
+          "name": "GET - Obtener pagos de usuario",
           "request": {
             "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/pagos/:usuario_id",
-              "host": ["{{baseUrl}}"],
-              "path": ["pagos", ":usuario_id"]
-            }
+            "url": "http://localhost:3000/pagos/1"
           }
         },
         {
-          "name": "GET - Estado de pago",
+          "name": "GET - Estado de pago del usuario",
           "request": {
             "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/pagos/estado/:usuario_id",
-              "host": ["{{baseUrl}}"],
-              "path": ["pagos", "estado", ":usuario_id"]
-            }
+            "url": "http://localhost:3000/pagos/estado/1"
           }
         },
         {
@@ -135,13 +99,9 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"usuario_id\": 1,\n    \"monto\": 52000,\n    \"fecha_pago\": \"2025-02-15\",\n    \"estado\": \"pagado\"\n}"
+              "raw": "{\n  \"usuario_id\": 1,\n  \"monto\": 52000,\n  \"fecha_pago\": \"2025-02-15\",\n  \"estado\": \"pagado\"\n}"
             },
-            "url": {
-              "raw": "{{baseUrl}}/pagos",
-              "host": ["{{baseUrl}}"],
-              "path": ["pagos"]
-            }
+            "url": "http://localhost:3000/pagos"
           }
         }
       ]
@@ -156,13 +116,9 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"lectura\": 250\n}"
+              "raw": "{\n  \"lectura\": 250\n}"
             },
-            "url": {
-              "raw": "{{baseUrl}}/lecturas/principal/:usuario_id",
-              "host": ["{{baseUrl}}"],
-              "path": ["lecturas", "principal", ":usuario_id"]
-            }
+            "url": "http://localhost:3000/lecturas/principal/1"
           }
         },
         {
@@ -172,35 +128,23 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"lectura\": 15\n}"
+              "raw": "{\n  \"lectura\": 15\n}"
             },
-            "url": {
-              "raw": "{{baseUrl}}/lecturas/diaria/:usuario_id",
-              "host": ["{{baseUrl}}"],
-              "path": ["lecturas", "diaria", ":usuario_id"]
-            }
+            "url": "http://localhost:3000/lecturas/diaria/1"
           }
         },
         {
           "name": "GET - Obtener lecturas por usuario",
           "request": {
             "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/lecturas/usuario/:usuario_id",
-              "host": ["{{baseUrl}}"],
-              "path": ["lecturas", "usuario", ":usuario_id"]
-            }
+            "url": "http://localhost:3000/lecturas/usuario/1"
           }
         },
         {
           "name": "GET - Obtener lectura única",
           "request": {
             "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/lecturas/:id",
-              "host": ["{{baseUrl}}"],
-              "path": ["lecturas", ":id"]
-            }
+            "url": "http://localhost:3000/lecturas/5"
           }
         }
       ]
