@@ -4,11 +4,15 @@ import {
     crearPago,
     actualizarPago
 } from '../models/pagosModel.js';
+<<<<<<< HEAD
 
 export async function getPagos(req, res) {
     const pagos = await obtenerPagos()
     res.json(pagos)
 }
+=======
+ 
+>>>>>>> 531bd6329f7d5c67b1f3929df90dbb68937535d3
 
 export async function getPago(req, res) {
     const pago = await obtenerPagoPorId(req.params.id);
