@@ -5,13 +5,8 @@ import {
     actualizarPago
 } from '../models/pagosModel.js';
 
-<<<<<<< HEAD
 export async function getPagos(req, res) {
-    const pagos = await obtenerPago()
-=======
-export async function getPagos(res, req) {
     const pagos = await obtenerPagos()
->>>>>>> c42fb88177a023c929249bd906dc140dc38adfb0
     res.json(pagos)
 }
 
