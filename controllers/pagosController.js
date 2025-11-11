@@ -4,7 +4,11 @@ import {
     crearPago,
     actualizarPago
 } from '../models/pagosModel.js';
- 
+
+export async function getPagos(req, res) {
+    const pagos = await obtenerPagos()
+    res.json(pagos)
+}
 
 export async function getPago(req, res) {
     const pago = await obtenerPagoPorId(req.params.id);
