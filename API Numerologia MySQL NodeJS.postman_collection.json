@@ -1,137 +1,209 @@
 {
-	"info": {
-		"_postman_id": "0878b7d6-e5df-4bb9-a3f4-2cf0357261ce",
-		"name": "API Numerologia MySQL NodeJS",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "48189478"
-	},
-	"item": [
-		{
-			"name": "Usuarios",
-			"item": [
-				{
-					"name": "GET Todos los Usuarios",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "GET Obtener Usuario",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "POST Registrar Usuario",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "PUT Actualizar InformacionUsuario",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "PATCH Cambiar Estado",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE Eliminar Usuario",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Pagos",
-			"item": [
-				{
-					"name": "GET Listar Todos los Pagos",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "GET Buscar pagos Usuario",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "POST Registrar Pago",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "GET Consultar Estado Usuario",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Lecturas",
-			"item": [
-				{
-					"name": "POST Lectura Principal",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "POST Lectura Diaria",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "GET Lecturas del Usuario",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "GET Lectura Especifica",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				}
-			]
-		}
-	]
+  "info": {
+    "name": "API Proyecto Usuarios-Pagos-Lecturas",
+    "_postman_id": "a1b2c3d4-e5f6-g7h8-i9j0",
+    "description": "Colección de endpoints del proyecto",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "GET - Obtener todos los usuarios",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/usuarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["usuarios"]
+            }
+          }
+        },
+        {
+          "name": "GET - Obtener usuario por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/usuarios/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["usuarios", ":id"]
+            }
+          }
+        },
+        {
+          "name": "POST - Crear usuario",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Juan Pérez\",\n    \"direccion\": \"Calle 123\",\n    \"telefono\": \"3001234567\",\n    \"estado\": \"activo\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/usuarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["usuarios"]
+            }
+          }
+        },
+        {
+          "name": "PUT - Actualizar usuario",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Carlos López\",\n    \"direccion\": \"Carrera 45\",\n    \"telefono\": \"3019876543\",\n    \"estado\": \"activo\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/usuarios/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["usuarios", ":id"]
+            }
+          }
+        },
+        {
+          "name": "PATCH - Cambiar estado usuario",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"estado\": \"inactivo\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/usuarios/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["usuarios", ":id"]
+            }
+          }
+        },
+        {
+          "name": "DELETE - Eliminar usuario",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/usuarios/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["usuarios", ":id"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pagos",
+      "item": [
+        {
+          "name": "GET - Obtener pagos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/pagos",
+              "host": ["{{baseUrl}}"],
+              "path": ["pagos"]
+            }
+          }
+        },
+        {
+          "name": "GET - Obtener pagos por usuario",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/pagos/:usuario_id",
+              "host": ["{{baseUrl}}"],
+              "path": ["pagos", ":usuario_id"]
+            }
+          }
+        },
+        {
+          "name": "GET - Estado de pago",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/pagos/estado/:usuario_id",
+              "host": ["{{baseUrl}}"],
+              "path": ["pagos", "estado", ":usuario_id"]
+            }
+          }
+        },
+        {
+          "name": "POST - Registrar pago",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"usuario_id\": 1,\n    \"monto\": 52000,\n    \"fecha_pago\": \"2025-02-15\",\n    \"estado\": \"pagado\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pagos",
+              "host": ["{{baseUrl}}"],
+              "path": ["pagos"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lecturas",
+      "item": [
+        {
+          "name": "POST - Lectura Mensual Principal",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"lectura\": 250\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lecturas/principal/:usuario_id",
+              "host": ["{{baseUrl}}"],
+              "path": ["lecturas", "principal", ":usuario_id"]
+            }
+          }
+        },
+        {
+          "name": "POST - Lectura Diaria",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"lectura\": 15\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lecturas/diaria/:usuario_id",
+              "host": ["{{baseUrl}}"],
+              "path": ["lecturas", "diaria", ":usuario_id"]
+            }
+          }
+        },
+        {
+          "name": "GET - Obtener lecturas por usuario",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/lecturas/usuario/:usuario_id",
+              "host": ["{{baseUrl}}"],
+              "path": ["lecturas", "usuario", ":usuario_id"]
+            }
+          }
+        },
+        {
+          "name": "GET - Obtener lectura única",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/lecturas/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["lecturas", ":id"]
+            }
+          }
+        }
+      ]
+    }
+  ]
 }
