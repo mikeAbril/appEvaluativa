@@ -32,11 +32,16 @@ export async function postUsuario(req, res) {
     try {
         const { nombre, email, fecha_nacimiento } = req.body;
         const nuevo = await crearUsuario(nombre, email, fecha_nacimiento);
-        res.status(201).json(nuevo)
+        res.status(201).json(nuevo);
     } catch (error) {
-        res.status(500).json({error: 'error al crear usuario'})
+        console.error(error);
+        if (error.code === 'ER_DUP_ENTRY') {
+            return res.status(400).json({ error: 'El email ya está registrado' });
+        }
+        res.status(500).json({ error: 'Error al crear usuario' });
     }
 }
+
 
 export async function putUsuario(req, res) {
     try {
