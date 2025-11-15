@@ -3,6 +3,7 @@ import {
     obtenerUsuarioPorId,
     crearUsuario,
     actualizarUsuario,
+    actualizarEstadoUsuario,
     eliminarUsuario
 }from '../models/usuariosModel.js';
 
@@ -58,12 +59,15 @@ export async function putUsuario(req, res) {
 export async function patchEstadoUsuario(req, res) {
     try {
         const usuario = await obtenerUsuarioPorId(req.params.id);
+
         if (!usuario) return res.status(404).json({ error: 'Usuario no encontrado' });
 
         const { estado } = req.body;
-        await pool.query('UPDATE usuarios SET estado = ? WHERE id = ?', [estado, req.params.id]);
 
-        res.json({ id: req.params.id, estado });
+        const actualizado = await actualizarEstadoUsuario(req.params.id, estado);
+
+        res.json(actualizado);
+
     } catch (error) {
         res.status(500).json({ error: 'Error al actualizar estado del usuario' });
     }

@@ -13,13 +13,26 @@ export async function obtenerUsuarioPorId(id){
 export async function crearUsuario(nombre, email, fecha_nacimiento){
     const [result] = await pool.query(
     'INSERT INTO usuarios (nombre, email, fecha_nacimiento) VALUES (?, ?, ?)',[nombre, email, fecha_nacimiento]);
-    return { id: result.insertId, nombre, email, fecha_nacimiento };
+    return { id: result. nombre, email, fecha_nacimiento };
 }
 
-export async function actualizarUsuario(id,{nombre, email}){
-    await pool.query('UPDATE usuarios SET nombre = ?, email = ? WHERE id = ?', [nombre, email, id]);
-    return { id, nombre, email };
+export async function actualizarUsuario(id, { nombre, email, fecha_nacimiento }) {
+    await pool.query(
+        'UPDATE usuarios SET nombre = ?, email = ?, fecha_nacimiento = ? WHERE id = ?',
+        [nombre, email, fecha_nacimiento, id]
+    );
+
+    return { id, nombre, email, fecha_nacimiento };
 }
+export async function actualizarEstadoUsuario(id, estado) {
+    const [result] = await pool.query(
+        'UPDATE usuarios SET estado = ? WHERE id = ?',
+        [estado, id]
+    );
+
+    return  result[0]
+}
+
 
 export async function eliminarUsuario(id){
     await pool.query('DELETE FROM usuarios WHERE id = ?', [id]);
