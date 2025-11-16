@@ -1,5 +1,5 @@
 import { Router } from "express";
-import{
+import {
     getPagos,
     getPago,
     postPago,
@@ -9,9 +9,10 @@ import{
 
 const router = Router();
 
-    router.get('/',getPagos);
-    router.get('/:usuario_id',getPago);
-    router.post('/', postPago);
-    router.get('/estado/:usuario_id', getPagoEstado)
+router.get('/estado/:usuario_id', getPagoEstado);
+router.get('/:usuario_id', getPago);
+router.get('/', getPagos);
+router.post('/', validarCreacionPago, postPago);
+
 
 export default router;
