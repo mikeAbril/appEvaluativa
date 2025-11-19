@@ -8,7 +8,7 @@ import {
   deleteUsuario
 } from '../controllers/usuariosController.js';
 
-import { validarCreacionUsuario, validarActualizacionUsuario } from '../middlewares/usuarios.js';
+import { validarCreacionUsuario, validarActualizacionUsuario } from '../validators/usuariosValidator.js';
 
 const router = Router();
 

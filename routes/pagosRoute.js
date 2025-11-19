@@ -5,6 +5,7 @@ import {
     postPago,
     getPagoEstado
 } from '../controllers/pagosController.js'
+import { validarActualizarPago, validarCreacionPago  } from '../validators/pagosValidator.js';
 
 
 const router = Router();
