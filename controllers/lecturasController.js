@@ -68,7 +68,7 @@ export async function postLecturaPrincipal(req, res) {
   const camino = calcularCaminoVida(lecturaPrincipal.usuario.fecha_nacimiento);
       
   const prompt = `
-  Actúa como un experto profesional en numerología pitagórica.
+Actúa como un experto profesional en numerología pitagórica.
 Recibirás un número ya calculado desde mi backend, correspondiente al Camino de Vida de una persona.
 Tu tarea es generar una Lectura Principal completa, profunda, coherente y personalizada según el número recibido.
 La lectura debe incluir:
@@ -87,7 +87,7 @@ Debes responder únicamente con la lectura completa para ese número.
 
   const lecturaGenerada = LecturaGeneradaIA(prompt);
   res.json({
-    nombre: `${lecturaPrincipal.usuario}`,
+    nombre: lecturaPrincipal.usuario.nombre,
     LecturaPrincipal: lecturaGenerada
   })
 
@@ -97,13 +97,58 @@ Debes responder únicamente con la lectura completa para ese número.
 }
 
 export async function postLectura(req, res) {
+  try {
+     const {usuario_id} = req.params;
+  const lecturaDiaria = await crearLecturaDiaria(usuario_id);
   
+      if (!lecturaDiaria.usuario_id) return res.status(404).json({error: 'Usuario no encontrado, verifica si existe'});
+
+      const camino = calcularCaminoVida(lecturaDiaria.usuario.fecha_nacimiento);
+   
+  
+  const prompt = `
+  Quiero que generes una lectura diaria breve pero profunda, inspirada en numerología y crecimiento personal, adaptada a la energía específica de la fecha que te daré.
+La lectura debe ser:
+Diferente cada día (no repitas estructura ni contenido).
+Concisa (8–12 líneas).
+Con tono motivador, reflexivo y espiritual, pero sin frases genéricas.
+Incluye:
+Energía numerológica del día (reduce la fecha y explícalo brevemente).
+Un mensaje central de enfoque.
+Un recordatorio emocional (disciplina, calma, enfoque, amor propio, etc.).
+Una acción del día (algo concreto y aplicable).
+No menciones “soy una IA”.
+No uses lenguaje exagerado ni místico extremo: que suene profesional, claro y humano.
+Al final, dame un resumen de 5 palabras clave del día.
+La fecha que quiero analizar es: ${camino}
+  `
+
+  const lecturaGenerada = LecturaGeneradaIA(prompt);
+   res.json({
+    nombre: lecturaDiaria.usuario.nombre,
+    LecturaPrincipal: lecturaGenerada
+  })
+  } catch (error) {
+     res.status(500).json({ error: 'Error al generar Lectura' });
+  }
 }
 
 export async function getLecturas(req, res) {
-    
+     try {
+           const lecturas = await obtenerLecturaPorId(req.params.id);
+           if (!lecturas) return res.status(404).json({ error: 'lectura no encontrado' });
+           res.json(lecturas);
+       } catch (error) {
+           res.status(500).json({ error: 'Error al obtener usuario' });
+       }
 }
 
 export async function getLectura(req, res) {
-    
+    try {
+          const lecturaUsuario = await obtenerUsuarioPorId(req.params.usuario_id);
+          if (!lecturaUsuario) return res.status(404).json({ error: 'Usuario no encontrado para mirar sus lecturas' });
+          res.json(lecturaUsuario);
+      } catch (error) {
+          res.status(500).json({ error: 'Error al obtener usuario' });
+      }
 }
