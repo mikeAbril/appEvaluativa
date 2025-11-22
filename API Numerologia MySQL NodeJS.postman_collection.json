@@ -13,14 +13,14 @@
           "name": "GET - Obtener todos los usuarios",
           "request": {
             "method": "GET",
-            "url": "http://localhost:3000/usuarios"
+            "url": "http://localhost:3000/api/usuarios"
           }
         },
         {
           "name": "GET - Obtener usuario por ID",
           "request": {
             "method": "GET",
-            "url": "http://localhost:3000/usuarios/1"
+            "url": "http://localhost:3000/api/usuarios/1"
           }
         },
         {
@@ -30,9 +30,9 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Juan Pérez\",\n  \"direccion\": \"Calle 123\",\n  \"telefono\": \"3001234567\",\n  \"estado\": \"activo\"\n}"
+              "raw": "{\n  \"nombre\": \"Juan Pérez\",\n  \"email\": \"juan@example.com\",\n  \"fecha_nacimiento\": \"1990-05-10\"\n}"
             },
-            "url": "http://localhost:3000/usuarios"
+            "url": "http://localhost:3000/api/usuarios"
           }
         },
         {
@@ -42,9 +42,9 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Carlos López\",\n  \"direccion\": \"Carrera 45\",\n  \"telefono\": \"3019876543\",\n  \"estado\": \"activo\"\n}"
+              "raw": "{\n  \"nombre\": \"Carlos López\",\n  \"email\": \"carlos@example.com\"\n}"
             },
-            "url": "http://localhost:3000/usuarios/1"
+            "url": "http://localhost:3000/api/usuarios/1"
           }
         },
         {
@@ -54,16 +54,16 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"estado\": \"inactivo\"\n}"
+              "raw": "{\n  \"estado\": \"activo\"\n}"
             },
-            "url": "http://localhost:3000/usuarios/1"
+            "url": "http://localhost:3000/api/usuarios/1"
           }
         },
         {
           "name": "DELETE - Eliminar usuario",
           "request": {
             "method": "DELETE",
-            "url": "http://localhost:3000/usuarios/1"
+            "url": "http://localhost:3000/api/usuarios/1"
           }
         }
       ]
@@ -72,36 +72,48 @@
       "name": "Pagos",
       "item": [
         {
-          "name": "GET - Obtener pagos",
+          "name": "GET - Obtener todos los pagos",
           "request": {
             "method": "GET",
-            "url": "http://localhost:3000/pagos"
+            "url": "http://localhost:3000/api/pagos"
           }
         },
         {
-          "name": "GET - Obtener pagos de usuario",
+          "name": "GET - Obtener pagos por usuario",
           "request": {
             "method": "GET",
-            "url": "http://localhost:3000/pagos/1"
+            "url": "http://localhost:3000/api/pagos/1"
           }
         },
         {
-          "name": "GET - Estado de pago del usuario",
+          "name": "GET - Estado del usuario",
           "request": {
             "method": "GET",
-            "url": "http://localhost:3000/pagos/estado/1"
+            "url": "http://localhost:3000/api/pagos/estado/1"
           }
         },
         {
-          "name": "POST - Registrar pago",
+          "name": "POST - Crear pago",
           "request": {
             "method": "POST",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"usuario_id\": 1,\n  \"monto\": 52000,\n  \"fecha_pago\": \"2025-02-15\",\n  \"estado\": \"pagado\"\n}"
+              "raw": "{\n  \"usuario_id\": 1,\n  \"monto\": 52000,\n  \"fecha_pago\": \"2025-02-15\",\n  \"fecha_vencimiento\": \"2025-03-15\",\n  \"metodo\": \"tarjeta\"\n}"
             },
-            "url": "http://localhost:3000/pagos"
+            "url": "http://localhost:3000/api/pagos"
+          }
+        },
+        {
+          "name": "PUT - Actualizar pago",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"monto\": 60000,\n  \"metodo\": \"efectivo\"\n}"
+            },
+            "url": "http://localhost:3000/api/pagos/1"
           }
         }
       ]
@@ -110,15 +122,15 @@
       "name": "Lecturas",
       "item": [
         {
-          "name": "POST - Lectura Mensual Principal",
+          "name": "POST - Lectura Principal",
           "request": {
             "method": "POST",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"lectura\": 250\n}"
+              "raw": "{\n  \"contenido\": \"Lectura mensual completa\"\n}"
             },
-            "url": "http://localhost:3000/lecturas/principal/1"
+            "url": "http://localhost:3000/api/lecturas/principal/1"
           }
         },
         {
@@ -128,23 +140,23 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"lectura\": 15\n}"
+              "raw": "{\n  \"contenido\": \"Lectura diaria registrada\"\n}"
             },
-            "url": "http://localhost:3000/lecturas/diaria/1"
+            "url": "http://localhost:3000/api/lecturas/diaria/1"
           }
         },
         {
           "name": "GET - Obtener lecturas por usuario",
           "request": {
             "method": "GET",
-            "url": "http://localhost:3000/lecturas/usuario/1"
+            "url": "http://localhost:3000/api/lecturas/usuario/1"
           }
         },
         {
-          "name": "GET - Obtener lectura única",
+          "name": "GET - Obtener lectura específica",
           "request": {
             "method": "GET",
-            "url": "http://localhost:3000/lecturas/5"
+            "url": "http://localhost:3000/api/lecturas/5"
           }
         }
       ]

@@ -1,5 +1,7 @@
-import express from "express"
-import 'dotenv/config'
+import express from "express";
+import 'dotenv/config';
+import { verificarMembresia } from "./cron/verificacionMembresia.js";
+import { alertarVencimientos } from "./cron/alertarVencimientos.js";
 
 import usuariosRoute from './routes/usuariosRoute.js';
 import lecturasRoute from './routes/lecturasRoute.js';
@@ -13,6 +15,12 @@ app.use('/api/usuarios', usuariosRoute);
 app.use('/api/lecturas', lecturasRoute);
 app.use('/api/pagos', pagosRoute);
 
-app.listen(process.env.PORT, ()=> console.log(`servidor corriendo en http://localhost:${process.env.PORT}`));
- 
+
+verificarMembresia();
+alertarVencimientos();
+
+app.listen(process.env.PORT, () =>
+  console.log(`Servidor corriendo en http://localhost:${process.env.PORT}`)
+);
+
  
