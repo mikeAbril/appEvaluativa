@@ -10,6 +10,7 @@ import {
 
 import { validarCreacionUsuario, validarActualizacionUsuario } from '../validators/usuariosValidator.js';
 
+
 const router = Router();
 
 router.get('/', getUsuarios);

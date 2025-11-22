@@ -1,11 +1,20 @@
-import {validationResult} from 'express-validator';
+import { validationResult } from 'express-validator';
 
-export const validarDatos = (req, res, next) =>{
-    const erros =  validationResult(req);
+export const validarDatos = (req, res, next) => {
+    const errors = validationResult(req);
 
+    if (!errors.isEmpty()) {
 
-    if(!erros.isEmpty()){
-        return res.status(400).json({erros: erros.array()});
+     
+        const mensajes = errors.array().map(err => ({
+            campo: err.path,
+            mensaje: err.msg
+        }));
+
+        return res.status(400).json({
+            errors: mensajes
+        });
     }
-next();
-}
+
+    next();
+};

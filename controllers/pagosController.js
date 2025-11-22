@@ -33,11 +33,17 @@ export async function getPago(req, res) {
 export async function postPago(req, res) {
   try {
     const { usuario_id, monto, metodo } = req.body;
-
     const nuevoPago = await crearPago(usuario_id, monto, metodo);
-
     res.status(201).json(nuevoPago);
+
+
   } catch (error) {
+    if(error.message.includes('Ya tienes una membresia activa')){
+      return res.status(409).json({
+        error: 'membresia activa',
+        mensaje: error.message
+      })
+    }
     console.error(error);
     res.status(500).json({ error: "Error al crear el nuevo pago" });
   }

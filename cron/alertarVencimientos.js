@@ -3,8 +3,8 @@ import pool from '../config/mysql.js';
 
 export function alertarVencimientos() {
 
-  // Corre cada día a las 8 AM
-  cron.schedule('0 8 * * *', async () => {
+  
+  cron.schedule('0 12 * * *', async () => {
     console.log('📢 Buscando membresías próximas a vencer (1 día)...');
 
     try {
@@ -41,5 +41,5 @@ export function alertarVencimientos() {
     timezone: "America/Bogota"
   });
 
-  console.log("⏰ Cron programado: buscar vencimientos TODOS LOS DÍAS A LAS 8 AM");
+  console.log("⏰ Cron programado: buscar vencimientos TODOS LOS DÍAS A LAS 12 PM");
 }

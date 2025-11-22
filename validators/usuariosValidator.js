@@ -1,5 +1,6 @@
 import {body} from 'express-validator';
 import {validarDatos} from './validateResults.js' ;
+import pool from '../config/mysql.js';
 
 export const validarCreacionUsuario = [
     body('nombre')
@@ -25,7 +26,7 @@ export const validarCreacionUsuario = [
     .isDate().withMessage('le fecha debe contener año, mes, día'),
   
 
-    validarDatos
+    validarDatos,
 ];
 
 
@@ -58,5 +59,5 @@ export const validarActualizacionUsuario = [
         .optional()
         .isDate().withMessage('La fecha debe contener año, mes y día'),
 
-    validarDatos
+   validarDatos,
 ];
