@@ -3,8 +3,8 @@ import pool from '../config/mysql.js';
 
 export function alertarVencimientos() {
 
-  
-  cron.schedule('0 /8 * * *', async () => {
+  // Corre cada día a las 8 AM
+  cron.schedule('0 8 * * *', async () => {
     console.log('📢 Buscando membresías próximas a vencer (1 día)...');
 
     try {
@@ -31,8 +31,6 @@ export function alertarVencimientos() {
         Email: ${user.email}
         Su membresía vence el: ${user.fecha_vencimiento}
         `);
-
-        
       });
 
     } catch (error) {
