@@ -4,7 +4,7 @@ import pool from '../config/mysql.js';
 export function alertarVencimientos() {
 
   
-  cron.schedule('0 12 * * *', async () => {
+  cron.schedule('0 5 * * *', async () => {
     console.log('📢 Buscando membresías próximas a vencer (1 día)...');
 
     try {

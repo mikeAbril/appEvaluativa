@@ -42,9 +42,3 @@ export async function eliminarUsuario(id) {
   await pool.query("DELETE FROM usuarios WHERE id = ?", [id]);
   return { mensaje: "Usuario eliminado" };
 }
-/* {
-  "nombre": "Juan Perez",
-  "email": "juan3@example.com",
-  "fecha_nacimiento": "1990-05-22",
-  "estado": "activo"
-} */

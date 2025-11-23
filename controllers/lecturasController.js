@@ -7,7 +7,7 @@ import {
 import { GoogleGenAI } from "@google/genai";
 
 const IA = new GoogleGenAI({
-  apiKey: "AIzaSyAYxosLe9ts62wxwRESgaSxrLcL8CuOs78"
+  apiKey: "AIzaSyB7QriGQz6PLVdpQ2b5l3jFtSU83qlJtPU"
 });
 
 async function LecturaGeneradaIA() {
