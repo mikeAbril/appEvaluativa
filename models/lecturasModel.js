@@ -7,7 +7,7 @@ export async function crearLecturaPrincipal(usuario_id, contenido = "") {
 
     const [result] = await pool.query(
         `
-        INSERT INTO lecturas (usuario_id, tipo, contenido, fecha)
+        INSERT INTO lecturas (usuario_id, tipo, contenido, fecha_lectura)
         VALUES (?, 'PRINCIPAL', ?, ?)
         `,
         [usuario_id, contenido, fecha]
@@ -34,7 +34,7 @@ export async function crearLecturaDiaria(usuario_id, contenido = "") {
 
     const [result] = await pool.query(
         `
-        INSERT INTO lecturas (usuario_id, tipo, contenido, fecha)
+        INSERT INTO lecturas (usuario_id, tipo, contenido, fecha_lectura)
         VALUES (?, 'DIARIA', ?, ?)
         `,
         [usuario_id, contenido, fecha]
