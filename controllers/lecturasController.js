@@ -7,7 +7,7 @@ import {
 import { GoogleGenAI } from "@google/genai";
 
 const IA = new GoogleGenAI({
-  apiKey: "AIzaSyB7QriGQz6PLVdpQ2b5l3jFtSU83qlJtPU"
+  apiKey: "AIzaSyA_rHu7UFfYaHVOb2poMGZZ024D9to1LPg"
 });
 
 async function LecturaGeneradaIA() {
@@ -30,7 +30,7 @@ function reducirNumero(num){
 
   let numero = num.toString().split('').map(n => parseInt(n))
   let suma = numero.reduce((a,b)=>a + b);
-  // console.log(suma);
+  
   
   return suma
 }

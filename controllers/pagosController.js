@@ -41,7 +41,7 @@ export async function postPago(req, res) {
     const { usuario_id, monto, metodo } = req.body;
     const nuevoPago = await crearPago(usuario_id, monto, metodo);
 
-    res.status(201).json({ ok: true, mensaje: "Pago realizado correctamente", pago: nuevoPago });
+    res.status(201).json({ mensaje: "Pago realizado correctamente", pago: nuevoPago });
   } catch (error) {
     console.error(error);
 
@@ -66,7 +66,7 @@ export async function putPago(req, res) {
       return res.status(404).json({  error: "Pago no encontrado" });
     }
 
-    res.json({ ok: true, mensaje: "Pago actualizado correctamente", pago: pagoActualizado });
+    res.json({  mensaje: "Pago actualizado correctamente", pago: pagoActualizado });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Error al actualizar el pago" });

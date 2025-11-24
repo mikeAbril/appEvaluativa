@@ -36,7 +36,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Carlos Actualizado\",\n  \"email\": \"carlos.actualizado@example.com\",\n  \"fecha_nacimiento\": \"1990-12-15\"\n}"
+              "raw": "{\n  \"nombre\": \"Carlos Actualizado\",\n  \"email\": \"carlos.actualizado@example.com\",\n  \"fecha_nacimiento\": \"1990-12-15\",\n \"Estado\": \"Inactivo\"\n }"
             },
             "url": "http://localhost:3000/api/usuarios/1"
           }
